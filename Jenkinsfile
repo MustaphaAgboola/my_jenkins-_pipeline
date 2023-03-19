@@ -32,17 +32,18 @@ pipeline {
                     }
                 }
             }
-        } stage('Prometheus and Granfana Deployment') {
-        steps {
-            script {
-                dir('kubernetes') {
-                    sh "kubectl apply -f prometheus-configmap.yaml"
-                    sh "kubectl apply -f prometheus-deployment.yaml"
-                    sh "kubectl apply -f prometheus-service.yaml"
-                    sh "kubectl apply -f grafana-deployment.yaml"
-                    sh "kubectl apply -f grafana-service.yaml"
-                    sh "kubectl get pods"
-                    sh "kubectl get svc"
+        } 
+        stage('Prometheus and Granfana Deployment') {
+            steps {
+                script {
+                    dir('kubernetes') {
+                        sh "kubectl apply -f prometheus-configmap.yaml"
+                        sh "kubectl apply -f prometheus-deployment.yaml"
+                        sh "kubectl apply -f prometheus-service.yaml"
+                        sh "kubectl apply -f grafana-deployment.yaml"
+                        sh "kubectl apply -f grafana-service.yaml"
+                        sh "kubectl get pods"
+                        sh "kubectl get svc"
                 }
             }
         }
